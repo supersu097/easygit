@@ -29,7 +29,7 @@ def gitpush():
     if commitmessage == "":
         os.system("git commit -m 'nothing to record'")
     else:
-        os.system("git commit -m '%s'" % commitmessage)
+        os.system("""git commit -m "%s" """ % commitmessage)
 
     os.system("git push origin master")
 
