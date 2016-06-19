@@ -10,7 +10,8 @@ def gitpush():
     for currentfile in filelist:
         print(str(i) + ". " + str(currentfile))
         i += 1
-    filename = input("Please choose what you wanna to push(default is all): ")
+    filename = input("Please choose what file you wanna push
+            (default is all edited but not staged for commit): ")
     if filename == "":
         os.system("git add ./")
     else:
@@ -25,9 +26,11 @@ def gitpush():
             print("ErrorOccur: " + str(e))
             exit()
 
-    commitmessage = input("Please input the commit message(default is nothing to record): ")
+    commitmessage = input("Please input the commit message
+            (default is nothing to record): ")
     if commitmessage == "":
-        os.system("git commit -m 'change a lot,nothing wanna fucking record'")
+        os.system("git commit -m 'change a lot,
+                nothing wanna fucking record'")
     else:
         os.system("""git commit -m "%s" """ % commitmessage)
 
