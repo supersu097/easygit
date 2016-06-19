@@ -27,7 +27,7 @@ def gitpush():
 
     commitmessage = input("Please input the commit message(default is nothing to record): ")
     if commitmessage == "":
-        os.system("git commit -m 'nothing to record'")
+        os.system("git commit -m 'change a lot,nothing wanna fucking record'")
     else:
         os.system("""git commit -m "%s" """ % commitmessage)
 
