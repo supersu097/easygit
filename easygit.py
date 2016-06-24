@@ -1,40 +1,45 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # coding=utf-8
 
 import os
+import argparse
 
 
-def gitpush():
-    i = 1
-    filelist = os.listdir("./")
-    for currentfile in filelist:
-        print(str(i) + ". " + str(currentfile))
-        i += 1
-    filename = input("Please choose what file you wanna push
-            (default is all edited but not staged for commit): ")
-    if filename == "":
+def gitpush(filename,allfile):
+    if filename:
+        os.system("git add %s" % filename)
+    elif allfile:
         os.system("git add ./")
-    else:
-        try:
-            choosenumber = int(filename)
-            if choosenumber <= len(filelist):
-                os.system("git add " + filelist[choosenumber-1])
-            else:
-                print("The number you input is too large,Please retry it!")
-                exit()
-        except ValueError as e:
-            print("ErrorOccur: " + str(e))
-            exit()
 
-    commitmessage = input("Please input the commit message
-            (default is nothing to record): ")
+
+    commitmessage = raw_input("Please input the commit message "
+                          "(default is nothing to record): ")
     if commitmessage == "":
-        os.system("git commit -m 'change a lot,
-                nothing wanna fucking record'")
+        os.system("git commit -m 'change a lot,"
+                  "nothing wanna fucking record'")
     else:
         os.system("""git commit -m "%s" """ % commitmessage)
 
     os.system("git push origin master")
 
-gitpush()
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser(
+        description='a simple py script to help you use git easily'
+    )
+    group=parser.add_mutually_exclusive_group(
+        required=True
+    )
+    group.add_argument(
+        '-f','--filename',
+        help='the file you wanna push to the remote git server',
+        type=file
+    )
+    group.add_argument(
+        '-a','--allfile',
+        help='add all edited but not staged for commit file',
+        action="store_true"
+    )
+    args=parser.parse_args()
+    gitpush(args.filename,args.allfile)
 
