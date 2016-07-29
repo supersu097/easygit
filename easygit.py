@@ -29,6 +29,11 @@ class Misc():
         self.gitverShow()
         self.gittreeShow()
 
+    def gitaddOption(self, gitver):
+        Misc().greenprint("\nDue to your current Git version\n"
+                          "of '{0}',you have these options for"
+                          "`git add` shown as below:".format(gitver))
+
     def choice_check(self):
         while True:
             choice = raw_input('Pls choose which action\n'
@@ -81,25 +86,20 @@ class Misc():
               'git add options:\n' + fyi + '\n')
 
 
-def main(filename, allchange):
+def main(filename, add_option):
     if filename:
         if len(filename) == 1:
             os.system("git add " + filename)
         else:
             os.system("git add " + ' '.join(filename))
 
-    elif allchange:
+    elif add_option:
         gitver = subprocess.check_output(
             ['git', '--version']).split()[2]
 
-        def gitaddOption():
-            Misc().greenprint("\nDue to your current Git version\n"
-                              "of '{0}',you have these options for"
-                              "`git add` shown as below:".format(gitver))
-
         if int(gitver[0]) == 1:
             Misc().gitinit()
-            gitaddOption()
+            Misc().gitaddOption(gitver)
 
             print("1. git add -A ---------> Stage All(new,modified,deleted) file\n"
                   "2. git add .  ---------> Stage New and Modified files only\n"
@@ -110,7 +110,7 @@ def main(filename, allchange):
 
         elif int(gitver[0]) == 2:
             Misc().gitinit()
-            gitaddOption()
+            Misc().gitaddOption(gitver)
 
             print("1. git add -A = git add . -----> Stage All(new,modified,deleted) file\n"
                   "2. git add -ignore-removal ----> Stage New and Modified files only\n"
@@ -121,13 +121,19 @@ def main(filename, allchange):
             Misc().gitcommit_push()
 
 
+def othercase(oc):
+    if oc:
+        Misc().gittreeShow()
+        Misc().gitcommit_push()
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        description='a simple py script to help you use git easily'
-    )
-    group = parser.add_mutually_exclusive_group(
-        required=True
-    )
+        description='a simple py script to help you use git easily')
+
+    group = parser.add_mutually_exclusive_group()
+        #required=True)
+
     group.add_argument(
         '-f', '--filename',
         help='the file you wanna push to the remote git server,\n'
@@ -136,18 +142,18 @@ if __name__ == '__main__':
         nargs='*')
 
     group.add_argument(
-        '-a', '--allchange',
-        help='add kinds of file changes to stage regarding your '
-             'local git version and your choice',
+        '-a', '--add_option',
+        help='add one or more case of file changes between new,\n'
+             'modified and deleted to stage regarding your local\n'
+             'git version and your choice',
         action="store_true")
 
     parser.add_argument(
-        '-o', '--other',
-        help='other change of git,then just commit and push',
+        '-o', '--other_case',
+        help='other case of change except for new,modified\n'
+             'and deleted,then just commit and push',
         action='store_true')
 
     args = parser.parse_args()
-    if args.other:
-        Misc().gitcommit_push()
-
-    main(args.filename, args.allchange)
+    othercase(args.other_case)
+    main(args.filename, args.add_option)
