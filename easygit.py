@@ -156,6 +156,5 @@ if __name__ == '__main__':
         action='store_true')
 
     args = parser.parse_args()
-    #print args.__dict__
     othercase(args.other_case)
     main(args.filename, args.add_option)
