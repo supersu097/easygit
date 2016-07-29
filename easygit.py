@@ -109,6 +109,7 @@ def main(filename, add_option):
                   "2. git add .  ---------> Stage New and Modified files only\n"
                   "3. git add -u ---------> Stage Modified and Deleted files only")
             Misc().fyi()
+            # For git V1.x,use the default param
             Misc().choice_match()
             Misc().gitcommit_push()
 
@@ -121,6 +122,7 @@ def main(filename, add_option):
                   "3. git add -u -----------------> Stage Modified and Deleted files only\n")
 
             Misc().fyi()
+            # For git V2.x,use the special param
             Misc().choice_match('-ignore-removal')
             Misc().gitcommit_push()
 
