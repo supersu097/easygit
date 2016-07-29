@@ -15,7 +15,7 @@ group.add_argument(
     '-f', '--filename',
     help='the file you wanna push to the remote git server,\n'
          'support multiple filename as args',
-    # type=file,
+    type=file,
     nargs='*'
 )
 group.add_argument(
@@ -30,7 +30,6 @@ args = parser.parse_args()
 def main(filename, allchange):
     if filename:
         if len(filename) == 1:
-            pass
             os.system("git add " + filename)
         else:
             os.system("git add " + ' '.join(filename))
