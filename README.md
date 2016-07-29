@@ -3,7 +3,7 @@
 基本够自己用了,后续自己再有什么需求了再慢慢实现。。
 ### Usage  
 ```
-usage: egit [-h] (-f [FILENAME [FILENAME ...]] | -a)
+usage: gitp [-h] (-f [FILENAME [FILENAME ...]] | -a | -o)
 
 a simple py script to help you use git easily
 
@@ -12,8 +12,11 @@ optional arguments:
   -f [FILENAME [FILENAME ...]], --filename [FILENAME [FILENAME ...]]
                         the file you wanna push to the remote git server,
                         support multiple filename as args
-  -a, --allchange       add kinds of file changes to stage regarding your
-                        local git version and your choice
+  -a, --add_option      add one or more case of file changes between new,
+                        modified and deleted to stage regarding your local git
+                        version and your choice
+  -o, --other_case      other case of change except for new,modified and
+                        deleted,then just commit and push
 ```
 ### Other
 对于各种`git add`各种选项如下图：  
