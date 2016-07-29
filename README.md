@@ -18,6 +18,6 @@ optional arguments:
 ### Other
 对于各种`git add`各种选项如下图：  
 ![](img/git_add_diff.png)  
-详情参考：[Difference between “git add -A” and “git add .”](http://stackoverflow.com/questions/572549)
+详情参考：[StackOverflow: Difference between “git add -A” and “git add .”](http://stackoverflow.com/questions/572549)
 ### 效果图如下
 ![](img/workflow.png)
