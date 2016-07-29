@@ -131,8 +131,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='a simple py script to help you use git easily')
 
-    group = parser.add_mutually_exclusive_group()
-        #required=True)
+    group = parser.add_mutually_exclusive_group(
+        required=True)
 
     group.add_argument(
         '-f', '--filename',
@@ -148,12 +148,13 @@ if __name__ == '__main__':
              'git version and your choice',
         action="store_true")
 
-    parser.add_argument(
+    group.add_argument(
         '-o', '--other_case',
         help='other case of change except for new,modified\n'
              'and deleted,then just commit and push',
         action='store_true')
 
     args = parser.parse_args()
+    #print args.__dict__
     othercase(args.other_case)
     main(args.filename, args.add_option)
