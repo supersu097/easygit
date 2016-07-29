@@ -66,9 +66,12 @@ class Misc():
             os.system("git commit -m 'change a lot,"
                       "nothing wanna fucking record'")
             os.system("git push origin master")
+            self.gittreeShow()
+
         else:
             os.system("git commit -m '%s'" % commitmessage)
             os.system("git push origin master")
+            self.gittreeShow()
 
     def choice_match(self, specialcase='.'):
         choice = self.choice_check()
