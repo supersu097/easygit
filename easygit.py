@@ -87,12 +87,15 @@ class Misc():
 
 def main(filename, add_option):
     if filename:
+        prompt = "Due to the args you passed,the 'git add' already executed!"
         if len(filename) == 1:
             os.system("git add " + filename[0].name)
+            Misc().green_print(prompt)
             Misc().gittree_show()
             Misc().gitcommit_push()
         else:
             os.system("git add " + ' '.join(filename))
+            Misc().green_print(prompt)
             Misc().gittree_show()
             Misc().gitcommit_push()
 
