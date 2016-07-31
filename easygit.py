@@ -27,8 +27,8 @@ class Misc():
 
     def gitadd_option(self, gitver):
         Misc().green_print("\nDue to your current Git version\n"
-                          "of '{0}',you have these options for"
-                          "`git add` shown as below:".format(gitver))
+                           "of '{0}',you have these options for"
+                           "`git add` shown as below:".format(gitver))
 
     def choice_check(self):
         while True:
@@ -38,19 +38,19 @@ class Misc():
             try:
                 if int(choice) not in [1, 2, 3]:
                     self.red_print('Error: Your choice\n'
-                                  'out of range,pls try again!\n')
+                                   'out of range,pls try again!\n')
                     continue
                 else:
                     return choice
             except ValueError:
                 self.red_print('Error: We need a number,\n'
-                              'You input wrong type,just try again!\n')
+                               'You input wrong type,just try again!\n')
                 continue
 
     def choice_exe(self, choicenum, gitadd_command):
         self.green_print("You choose No.{0},\n"
-                        "so the command of '{1}' will "
-                        "be execute right now!\n".format(choicenum, gitadd_command))
+                         "so the command of '{1}' will "
+                         "be execute right now!\n".format(choicenum, gitadd_command))
         os.system(gitadd_command)
         self.gittree_show()
 
