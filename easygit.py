@@ -36,7 +36,7 @@ class Misc():
                                'of number you wanna do shown as above [1,2,3]: ')
 
             try:
-                if int(choice) not in [1, 2, 3]:
+                if int(choice) not in range(1,4):
                     self.red_print('Error: Your choice\n'
                                    'out of range,pls try again!\n')
                     continue
