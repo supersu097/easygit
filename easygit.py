@@ -26,14 +26,14 @@ class Misc():
         os.system('git status')
 
     def gitadd_option(self, gitver):
-        Misc().green_print("\nDue to your current Git version\n"
+        self.green_print("\nDue to your current Git version\n"
                            "of '{0}',you have these options for"
                            "`git add` shown as below:".format(gitver))
 
     def choice_check(self):
         while True:
             choice = raw_input('Pls choose which action\n'
-                               'of number you wanna do shown as above [1,2,3]: ')
+                               'of number you wanna do shown as above %s: ' % range(1,4))
 
             try:
                 if int(choice) not in range(1,4):
