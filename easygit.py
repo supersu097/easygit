@@ -25,10 +25,6 @@ class Misc():
         self.greenprint("\nYour working tree status is shown as below:")
         os.system('git status')
 
-    def gitinit(self):
-        self.gitverShow()
-        self.gittreeShow()
-
     def gitaddOption(self, gitver):
         Misc().greenprint("\nDue to your current Git version\n"
                           "of '{0}',you have these options for"
@@ -51,13 +47,12 @@ class Misc():
                               'You input wrong type,just try again!\n')
                 continue
 
-    def choice_exe(self, choicenum, command):
+    def choice_exe(self, choicenum, gitadd_command):
         self.greenprint("You choose No.{0},\n"
                         "so the command of '{1}' will "
-                        "be execute right now!\n".format(choicenum, command))
-        os.system(command)
-        self.greenprint('Now your working tree status is shown as below:')
-        os.system('git status')
+                        "be execute right now!\n".format(choicenum, gitadd_command))
+        os.system(gitadd_command)
+        self.gittreeShow()
 
     def gitcommit_push(self):
         commitmessage = raw_input("Please input the commit message\n"
@@ -93,16 +88,21 @@ class Misc():
 def main(filename, add_option):
     if filename:
         if len(filename) == 1:
-            os.system("git add " + filename)
+            os.system("git add " + filename[0].name)
+            Misc().gittreeShow()
+            Misc().gitcommit_push()
         else:
             os.system("git add " + ' '.join(filename))
+            Misc().gittreeShow()
+            Misc().gitcommit_push()
 
     elif add_option:
         gitver = subprocess.check_output(
             ['git', '--version']).split()[2]
 
         if int(gitver[0]) == 1:
-            Misc().gitinit()
+            Misc().gitverShow()
+            Misc().gittreeShow()
             Misc().gitaddOption(gitver)
 
             print("1. git add -A ---------> Stage All(new,modified,deleted) file\n"
@@ -114,7 +114,8 @@ def main(filename, add_option):
             Misc().gitcommit_push()
 
         elif int(gitver[0]) == 2:
-            Misc().gitinit()
+            Misc().gitverShow()
+            Misc().gittreeShow()
             Misc().gitaddOption(gitver)
 
             print("1. git add -A = git add . -----> Stage All(new,modified,deleted) file\n"
