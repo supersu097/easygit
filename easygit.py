@@ -11,22 +11,22 @@ class Misc():
     RED = '\033[31m'
     END = '\033[0m'
 
-    def redprint(self, Uprint):
+    def red_print(self, Uprint):
         print(self.RED + Uprint + self.END)
 
-    def greenprint(self, Uprint):
+    def green_print(self, Uprint):
         print(self.GREEN + Uprint + self.END)
 
-    def gitverShow(self):
-        self.greenprint("Your Git version is shown as below:")
+    def gitver_show(self):
+        self.green_print("Your Git version is shown as below:")
         os.system('git --version')
 
-    def gittreeShow(self):
-        self.greenprint("\nYour working tree status is shown as below:")
+    def gittree_show(self):
+        self.green_print("\nYour working tree status is shown as below:")
         os.system('git status')
 
-    def gitaddOption(self, gitver):
-        Misc().greenprint("\nDue to your current Git version\n"
+    def gitadd_option(self, gitver):
+        Misc().green_print("\nDue to your current Git version\n"
                           "of '{0}',you have these options for"
                           "`git add` shown as below:".format(gitver))
 
@@ -37,22 +37,22 @@ class Misc():
 
             try:
                 if int(choice) not in [1, 2, 3]:
-                    self.redprint('Error: Your choice\n'
+                    self.red_print('Error: Your choice\n'
                                   'out of range,pls try again!\n')
                     continue
                 else:
                     return choice
             except ValueError:
-                self.redprint('Error: We need a number,\n'
+                self.red_print('Error: We need a number,\n'
                               'You input wrong type,just try again!\n')
                 continue
 
     def choice_exe(self, choicenum, gitadd_command):
-        self.greenprint("You choose No.{0},\n"
+        self.green_print("You choose No.{0},\n"
                         "so the command of '{1}' will "
                         "be execute right now!\n".format(choicenum, gitadd_command))
         os.system(gitadd_command)
-        self.gittreeShow()
+        self.gittree_show()
 
     def gitcommit_push(self):
         commitmessage = raw_input("Please input the commit message\n"
@@ -61,12 +61,12 @@ class Misc():
             os.system("git commit -m 'change a lot,"
                       "nothing wanna fucking record'")
             os.system("git push origin master")
-            self.gittreeShow()
+            self.gittree_show()
 
         else:
             os.system("git commit -m '%s'" % commitmessage)
             os.system("git push origin master")
-            self.gittreeShow()
+            self.gittree_show()
 
     def choice_match(self, specialcase='.'):
         choice = self.choice_check()
@@ -89,11 +89,11 @@ def main(filename, add_option):
     if filename:
         if len(filename) == 1:
             os.system("git add " + filename[0].name)
-            Misc().gittreeShow()
+            Misc().gittree_show()
             Misc().gitcommit_push()
         else:
             os.system("git add " + ' '.join(filename))
-            Misc().gittreeShow()
+            Misc().gittree_show()
             Misc().gitcommit_push()
 
     elif add_option:
@@ -101,9 +101,9 @@ def main(filename, add_option):
             ['git', '--version']).split()[2]
 
         if int(gitver[0]) == 1:
-            Misc().gitverShow()
-            Misc().gittreeShow()
-            Misc().gitaddOption(gitver)
+            Misc().gitver_show()
+            Misc().gittree_show()
+            Misc().gitadd_option(gitver)
 
             print("1. git add -A ---------> Stage All(new,modified,deleted) file\n"
                   "2. git add .  ---------> Stage New and Modified files only\n"
@@ -114,9 +114,9 @@ def main(filename, add_option):
             Misc().gitcommit_push()
 
         elif int(gitver[0]) == 2:
-            Misc().gitverShow()
-            Misc().gittreeShow()
-            Misc().gitaddOption(gitver)
+            Misc().gitver_show()
+            Misc().gittree_show()
+            Misc().gitadd_option(gitver)
 
             print("1. git add -A = git add . -----> Stage All(new,modified,deleted) file\n"
                   "2. git add -ignore-removal ----> Stage New and Modified files only\n"
@@ -130,7 +130,7 @@ def main(filename, add_option):
 
 def othercase(oc):
     if oc:
-        Misc().gittreeShow()
+        Misc().gittree_show()
         Misc().gitcommit_push()
 
 
