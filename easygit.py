@@ -64,7 +64,7 @@ class Misc():
             self.gittree_show()
 
         else:
-            os.system("git commit -m '%s'" % commitmessage)
+            os.system("""git commit -m "%s" """ % commitmessage)
             os.system("git push origin master")
             self.gittree_show()
 
