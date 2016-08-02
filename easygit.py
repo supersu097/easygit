@@ -34,7 +34,9 @@ class Misc():
         while True:
             choice = raw_input('Pls choose which action\n'
                                'of number you wanna do shown as above %s: ' % range(1,4))
-
+            if choice == '':
+                self.green_print("Nothing input,it's default to execute action 1.")
+                return 1
             try:
                 if int(choice) not in range(1,4):
                     self.red_print('Error: Your choice\n'
