@@ -61,7 +61,7 @@ class Misc():
                                   "  (default is nothing to record): ")
         if commitmessage == "":
             os.system("git commit -m 'change a lot,"
-                      "nothing wanna fucking record'")
+                      "no fucking message wanna leave on the table'")
             os.system("git push origin master")
             self.gittree_show()
 
