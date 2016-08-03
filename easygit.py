@@ -60,8 +60,7 @@ class Misc():
         commitmessage = raw_input("Please input the commit message\n"
                                   "  (default is nothing to record): ")
         if commitmessage == "":
-            os.system("git commit -m 'change a lot,"
-                      "no fucking message wanna leave on the table'")
+            os.system("git commit -m 'no fucking message wanna leave on the table'")
             os.system("git push origin master")
             self.gittree_show()
 
