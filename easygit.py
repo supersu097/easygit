@@ -4,6 +4,8 @@
 import os
 import argparse
 import subprocess
+import sys
+
 
 
 class Misc():
@@ -85,8 +87,14 @@ class Misc():
         print('FYI of difference between kinds of '
               'git add options:\n' + fyi + '\n')
 
-    #def gitrepo
+    def gitrepo_check(self):
+        if os.system('git status >/dev/null 2>&1') != 0:
+            os.system('git status')
+            sys.exit(1)
+
+
 def main(filename, other_case):
+    Misc().gitrepo_check()
     if filename:
         prompt = "Due to the args you passed,the 'git add' already executed!"
         if len(filename) == 1:
