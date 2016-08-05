@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-import os
 import argparse
+import os
 import subprocess
 import sys
-
 
 
 class Misc():
@@ -29,18 +28,18 @@ class Misc():
 
     def gitadd_option(self, gitver):
         self.green_print("\nDue to your current Git version\n"
-                           "of '{0}',you have these options for"
-                           "`git add` shown as below:".format(gitver))
+                         "of '{0}',you have these options for"
+                         "`git add` shown as below:".format(gitver))
 
     def choice_check(self):
         while True:
             choice = raw_input('Pls choose which action\n'
-                               'of number you wanna do shown as above %s: ' % range(1,4))
+                               'of number you wanna do shown as above %s: ' % range(1, 4))
             if choice == '':
                 self.green_print("Nothing input,it's default to execute action 1.\n")
                 return 1
             try:
-                if int(choice) not in range(1,4):
+                if int(choice) not in range(1, 4):
                     self.red_print('Error: Your choice\n'
                                    'out of range,pls try again!\n')
                     continue
@@ -59,17 +58,19 @@ class Misc():
         self.gittree_show()
 
     def gitcommit_push(self):
-        commitmessage = raw_input("Please input the commit message\n"
+        commitmessage = raw_input("Pls input the commit message\n"
                                   "  (default is nothing to commit): ")
-        if commitmessage == "":
+        extended_desc = raw_input("Sometimes U'd wanna leave extended description here\n"
+                                  "  (Default is leaving blank here): ")
+        if commitmessage == "" and extended_desc == "":
             os.system("git commit -m 'no fucking message wanna commit'")
-            os.system("git push origin master")
-            self.gittree_show()
 
         else:
-            os.system("""git commit -m "%s" """ % commitmessage)
-            os.system("git push origin master")
-            self.gittree_show()
+            os.system("""git commit -m "{0}" "{1}" """.format(
+                commitmessage, extended_desc))
+
+        os.system("git push origin master")
+        self.gittree_show()
 
     def choice_match(self, specialcase='.'):
         choice = self.choice_check()
@@ -147,7 +148,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='a simple py script to help you use git easily')
 
-    #group = parser.add_mutually_exclusive_group(
+    # group = parser.add_mutually_exclusive_group(
     #    required=True)
 
     parser.add_argument(
@@ -157,7 +158,7 @@ if __name__ == '__main__':
         type=file,
         nargs='*')
 
-    #group.add_argument(
+    # group.add_argument(
     #    '-a', '--add_option',
     #    help='add one or more case of file changes between new,\n'
     #         'modified and deleted to stage regarding your local\n'
