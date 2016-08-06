@@ -66,7 +66,7 @@ class Misc():
             os.system("git commit -m 'no fucking message wanna commit'")
 
         else:
-            os.system("""git commit -m "{0}" "{1}" """.format(
+            os.system("""git commit -m "{0}" -m "{1}" """.format(
                 commitmessage, extended_desc))
 
         os.system("git push origin master")
