@@ -18,6 +18,7 @@ optional arguments:
   -o, --other_case      other case of change except for new,modified and
                         deleted,then just commit and push
 ```
+
 ### Other
 对于各种`git add`各种选项如下图：  
 ![](img/git_add_diff.png)  
