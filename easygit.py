@@ -11,6 +11,8 @@ class Misc():
     GREEN = '\033[32m'
     RED = '\033[31m'
     END = '\033[0m'
+    notethat="Choosing this option of '-o' is mean to just only\n"\
+             "execute the command of 'git commit' and 'git push'"
 
     def red_print(self, Uprint):
         print(self.RED + Uprint + self.END)
@@ -110,6 +112,7 @@ def main(filename, other_case):
             Misc().gitcommit_push()
     elif other_case:
         Misc().gittree_show()
+        Misc().green_print(Misc().notethat)
         Misc().gitcommit_push()
 
     else:
@@ -146,10 +149,10 @@ def main(filename, other_case):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        description='a simple py script to help you use git easily')
-
-    # group = parser.add_mutually_exclusive_group(
-    #    required=True)
+        description='a simple py script to help you use git easily',
+        epilog='Note that: Without any arg passed is mean to '
+               'execute the ordinary git flow command then just '
+               'flow the prompt')
 
     parser.add_argument(
         '-f', '--filename',
@@ -158,17 +161,9 @@ if __name__ == '__main__':
         type=file,
         nargs='*')
 
-    # group.add_argument(
-    #    '-a', '--add_option',
-    #    help='add one or more case of file changes between new,\n'
-    #         'modified and deleted to stage regarding your local\n'
-    #         'git version and your choice',
-    #    action="store_true")
-
     parser.add_argument(
         '-o', '--other_case',
-        help='other case of change except for new,modified\n'
-             'and deleted,then just commit and push',
+        help= Misc().notethat,
         action='store_true')
 
     args = parser.parse_args()
