@@ -35,10 +35,10 @@ class Misc():
 
     def choice_check(self):
         while True:
-            choice = raw_input('Pls choose which action\n'
-                               'of number you wanna do shown as above %s: ' % range(1, 4))
+            choice = raw_input('Pls choose which option\n'
+                               'of number you wanna run shown as above %s: ' % range(1, 4))
             if choice == '':
-                self.green_print("Nothing input,it's default to execute action 1.\n")
+                self.green_print("Nothing input,it's default to execute option 1.\n")
                 return 1
             try:
                 if int(choice) not in range(1, 4):
