@@ -55,7 +55,7 @@ class Misc():
     def choice_exe(self, choicenum, gitadd_command):
         self.green_print("You choose No.{0},\n"
                          "so the command of '{1}' will "
-                         "be execute right now!\n".format(choicenum, gitadd_command))
+                         "be executed right now!\n".format(choicenum, gitadd_command))
         os.system(gitadd_command)
         self.gittree_show()
 
