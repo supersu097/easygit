@@ -3,7 +3,7 @@
 基本够自己用了,后续自己再有什么需求了再慢慢实现。。
 ### Usage  
 ```
-usage: gitp [-h] (-f [FILENAME [FILENAME ...]] | -a | -o)
+usage: gp [-h] [-f [FILENAME [FILENAME ...]]] [-o]
 
 a simple py script to help you use git easily
 
@@ -12,11 +12,11 @@ optional arguments:
   -f [FILENAME [FILENAME ...]], --filename [FILENAME [FILENAME ...]]
                         the file you wanna push to the remote git server,
                         support multiple filename as args
-  -a, --add_option      add one or more case of file changes between new,
-                        modified and deleted to stage regarding your local git
-                        version and your choice
-  -o, --other_case      other case of change except for new,modified and
-                        deleted,then just commit and push
+  -o, --other_case      Choosing this option of '-o' is mean to just only
+                        execute the command of 'git commit' and 'git push'
+
+Note that: Without any arg passed is mean to execute the ordinary git flow
+command then just flow the prompt
 ```
 
 ### Other
