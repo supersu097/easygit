@@ -149,11 +149,12 @@ def main(filename, other_case):
 
 if __name__ == '__main__':
     if subprocess.check_output('uname',shell=True) == 'Linux\n':
-        sys.exit('Due to the git error of bad index file '
-                 'occur many times of my ubuntu box in VM and this cannot '
-                 'be solved.\nIn addition,one dir in the var of PATH are the '
-                 'same between the two boxes,and I do not wanna divide this,'
-                 'so I have to do this verification!\n')
+        sys.exit("""Due to the git error of bad index file occured many 
+times of my ubuntu box in VM and the solution from 
+searching didn't really work.In addition,one dir in 
+the var of PATH was the same between the two boxes, 
+and I don't wanna divide this,so I have to do this
+verification!\n""")
     parser = argparse.ArgumentParser(
         description='a simple py script to help you use git easily',
         epilog='Note that: Without any arg passed is mean to '
