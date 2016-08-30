@@ -107,8 +107,8 @@ def main(filename, other_case):
             Misc().gitcommit_push()
         else:
             os.system("git add " + ' '.join(filename))
-            Misc().green_print(prompt)
             Misc().gittree_show()
+            Misc().green_print(prompt)
             Misc().gitcommit_push()
     elif other_case:
         Misc().gittree_show()
