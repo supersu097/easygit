@@ -11,8 +11,6 @@ class Misc():
     GREEN = '\033[32m'
     RED = '\033[31m'
     END = '\033[0m'
-    notethat="Choosing this option of '-o' is mean to just only\n"\
-             "execute the command of 'git commit' and 'git push'"
 
     def red_print(self, Uprint):
         print(self.RED + Uprint + self.END)
@@ -96,7 +94,7 @@ class Misc():
             sys.exit(1)
 
 
-def main(filename, other_case):
+def main(filename):
     Misc().gitrepo_check()
     if filename:
         prompt = "Due to the args you passed,the 'git add' already executed!"
@@ -107,13 +105,9 @@ def main(filename, other_case):
             Misc().gitcommit_push()
         else:
             os.system("git add " + ' '.join(filename))
-            Misc().gittree_show()
             Misc().green_print(prompt)
+            Misc().gittree_show()
             Misc().gitcommit_push()
-    elif other_case:
-        Misc().gittree_show()
-        Misc().green_print(Misc().notethat)
-        Misc().gitcommit_push()
 
     else:
         gitver = subprocess.check_output(
@@ -168,10 +162,5 @@ verification!\n""")
         type=file,
         nargs='*')
 
-    parser.add_argument(
-        '-o', '--other_case',
-        help= Misc().notethat,
-        action='store_true')
-
     args = parser.parse_args()
-    main(args.filename, args.other_case)
+    main(args.filename)
