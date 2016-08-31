@@ -99,7 +99,7 @@ def main(filename):
     if filename:
         if len(filename) == 1:
             os.system("git add " + filename[0].name)
-            Misc().gittreeshow()
+            Misc().gittree_show()
             Misc().green_print(prompt)
             Misc().gitcommit_push()
         else:
