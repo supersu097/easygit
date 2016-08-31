@@ -12,8 +12,6 @@ optional arguments:
   -f [FILENAME [FILENAME ...]], --filename [FILENAME [FILENAME ...]]
                         the file you wanna push to the remote git server,
                         support multiple filename as args
-  -o, --other_case      Choosing this option of '-o' is mean to just only
-                        execute the command of 'git commit' and 'git push'
 
 Note that: Without any arg passed is mean to execute the ordinary git flow
 command then just flow the prompt
