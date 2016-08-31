@@ -97,16 +97,17 @@ class Misc():
 def main(filename):
     Misc().gitrepo_check()
     if filename:
-        prompt = "Due to the args you passed,the 'git add' already executed!"
         if len(filename) == 1:
             os.system("git add " + filename[0].name)
+            Misc().gittreeshow()
             Misc().green_print(prompt)
-            Misc().gittree_show()
             Misc().gitcommit_push()
         else:
-            os.system("git add " + ' '.join(filename))
-            Misc().green_print(prompt)
-            Misc().gittree_show()
+            filelist=[]
+            for li in filename:
+                filelist.append(li.name)
+            os.system("git add " + ' '.join(filelist))
+            Misc().gittreeshow()
             Misc().gitcommit_push()
 
     else:
