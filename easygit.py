@@ -85,8 +85,8 @@ class Misc():
 
     def fyi(self):
         fyi = 'http://stackoverflow.com/questions/572549/'
-        print('FYI of difference between kinds of '
-              'git add options:\n' + fyi + '\n')
+        print('Distinction between several '
+              'git-add options:\n' + fyi + '\n')
 
     def gitrepo_check(self):
         if os.system('git status >/dev/null 2>&1') != 0:
