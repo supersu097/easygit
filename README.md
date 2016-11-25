@@ -5,7 +5,7 @@
 ```
 usage: gp [-h] [-f [FILENAME [FILENAME ...]]] [-o]
 
-a simple py script to help you use git easily
+a simple py script to help me use git easily
 
 optional arguments:
   -h, --help            show this help message and exit

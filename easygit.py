@@ -150,7 +150,7 @@ the var of PATH was the same between the two boxes,
 and I don't wanna divide this,so I have to do this
 verification!\n""")
     parser = argparse.ArgumentParser(
-        description='a simple py script to help you use git easily',
+        description='a simple py script to help me use git easily',
         epilog='Note that: Without any arg passed is mean to '
                'execute the ordinary git flow command then just '
                'flow the prompt')
