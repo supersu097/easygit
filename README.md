@@ -19,7 +19,7 @@ command then just flow the prompt
 
 ### Other
 对于各种`git add`各种选项如下图：  
-![](img/git_add_diff.png)  
+<img src="img/git_add_diff.png" width="444" height="288">
 详情参考：[StackOverflow: Difference between “git add -A” and “git add .”](http://stackoverflow.com/questions/572549)
-### 效果图如下
-![](img/workflow.png)
+### Effect demo
+<img src="img/workflow.png" width="444" height="537">
