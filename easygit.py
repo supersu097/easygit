@@ -69,7 +69,8 @@ class Misc():
             os.system("""git commit -m "{0}" -m "{1}" """.format(
                 commitmessage, extended_desc))
 
-        os.system("git push origin master")
+        curr_branch = subprocess.check_output('git branch',shell=True).split()[1]
+        os.system("git push origin {0}".format(curr_branch))
         self.gittree_show()
 
     def choice_match(self, specialcase='.'):
