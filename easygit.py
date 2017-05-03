@@ -68,8 +68,10 @@ class Misc():
         else:
             os.system("""git commit -m "{0}" -m "{1}" """.format(
                 commitmessage, extended_desc))
-
-        curr_branch = subprocess.check_output('git branch',shell=True).split()[1]
+        br_list = subprocess.check_output('git branch',shell=True).split('\n')
+        for _ in br_list:
+            if '*' in _:
+                curr_branch= _.split()[1]
         os.system("git push origin {0}".format(curr_branch))
         self.gittree_show()
 
