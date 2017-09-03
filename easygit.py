@@ -100,12 +100,8 @@ class Misc():
 def main(filename):
     Misc().gitrepo_check()
     if filename:
-        if len(filename) == 0:
-            Misc().red_print('You have to at least specify one file, otherwise'
-                    'go fuck urself!')
-            sys.exit(1)
 
-        elif len(filename) == 1:
+        if len(filename) == 1:
             os.system("git add " + filename[0].name)
             Misc().gittree_show()
             Misc().gitcommit_push()
@@ -118,6 +114,14 @@ def main(filename):
             Misc().gitcommit_push()
 
     else:
+        # Here is a little hack meaning, coz if no value passing to the option
+        # of --filename will directly go here
+
+        if len(filename) == 0:
+            Misc().red_print('You have to at least specify one file, otherwise '
+                    'go fuck urself +1s!')
+            sys.exit(1)
+
         gitver = subprocess.check_output(
             ['git', '--version']).split()[2]
 
