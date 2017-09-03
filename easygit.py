@@ -109,7 +109,7 @@ def main(filename):
             for li in filename:
                 filelist.append(li.name)
             os.system("git add " + ' '.join(filelist))
-            Misc().gittreeshow()
+            Misc().gittree_show()
             Misc().gitcommit_push()
 
     else:
