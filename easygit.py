@@ -100,7 +100,12 @@ class Misc():
 def main(filename):
     Misc().gitrepo_check()
     if filename:
-        if len(filename) == 1:
+        if len(filename) == 0:
+            Misc().red_print('You have to at least specify one file, otherwise'
+                    'go fuck urself!')
+            sys.exit(1)
+
+        elif len(filename) == 1:
             os.system("git add " + filename[0].name)
             Misc().gittree_show()
             Misc().gitcommit_push()
