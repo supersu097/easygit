@@ -114,13 +114,15 @@ def main(filename):
             Misc().gitcommit_push()
 
     else:
+        # if give no option, the object of filename is NoneType, meanwhile type 'NoneType'
+        # has no len()
+        if filename is not None:
         # Here is a little hack meaning, coz if no value passing to the option
         # of --filename will directly go here
-
-        if len(filename) == 0:
-            Misc().red_print('You have to at least specify one file, otherwise '
-                    'go fuck urself +1s!')
-            sys.exit(1)
+            if len(filename) == 0:
+                Misc().red_print('You have to at least specify one file, otherwise '
+                        'go fuck urself +1s!')
+                sys.exit(1)
 
         gitver = subprocess.check_output(
             ['git', '--version']).split()[2]
