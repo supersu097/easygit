@@ -58,12 +58,11 @@ class Misc():
         self.gittree_show()
 
     def gitcommit_push(self):
-        commitmessage = raw_input("Pls input the commit message\n"
-                                  "  (default is nothing to commit): ")
+        commitmessage = raw_input("Pls input the commit message(default is update): ")
         extended_desc = raw_input("Sometimes U'd wanna leave extended description here\n"
                                   "  (Default is leaving blank here): ")
         if commitmessage == "" and extended_desc == "":
-            os.system("git commit -m 'no fucking message wanna commit'")
+            os.system("git commit -m 'update'")
 
         else:
             os.system("""git commit -m "{0}" -m "{1}" """.format(
