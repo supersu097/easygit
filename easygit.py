@@ -162,11 +162,10 @@ if __name__ == '__main__':
                'flow the prompt')
 
     parser.add_argument(
-        '-f', '--filename',
-        help='the file you wanna push to the remote git server,\n'
-             'support multiple filename as args',
-        type=file,
+        '-t', '--target',
+        help='the file/dir you wanna push to the remote git server,\n'
+             'support multiple files/dirs as args',
         nargs='*')
 
     args = parser.parse_args()
-    main(args.filename)
+    main(args.target)
