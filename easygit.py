@@ -107,7 +107,7 @@ def main(filename):
         else:
             filelist=[]
             for li in filename:
-                filelist.append(li.name)
+                filelist.append(li)
             os.system("git add " + ' '.join(filelist))
             Misc().gittree_show()
             Misc().gitcommit_push()
